@@ -1,7 +1,7 @@
 <?php
 
-//Variables for connecting to your database.
-//These variable values come from your hosting account.
+//Variables for connecting to your database
+//These variable values come from your hosting account
 $hostname = "localhost";
 $username = "pnwcoaches";
 $dbname = "pnwcoaches";
@@ -9,12 +9,14 @@ $password = "Bozeman1803!";
 $usertable = "endTheTrend";
 
 //SQL Fields for JSON
-$cNamefield = "coachName";
+$cNameField = "coachName";
 $cCityField = "coachCity";
 $cStoryField = "coachStory";
 $cStatementField = "coachStatement";
 $cPicField = "coachPic";
-$cStatusfield = "coachUse";
+$cStatusField = "coachUse";
+
+$cJSONString = "";
 
 //Connecting to your database
 mysql_connect($hostname, $username, $password) OR DIE ("Unable to connect to database! Please try again later.");
@@ -23,32 +25,35 @@ mysql_select_db($dbname);
 //Fetching from your database table.
 $selectQuery = "SELECT * FROM $usertable";
 $selectResult = mysql_query($selectQuery);
-//$updateQuery = "UPDATE endTheTrend SET $cStatusfield = '1' WHERE $cNamefield = 'coachName 00'";
-//$supdateResult = mysql_query($updateQuery);
 
-//echo $selectResult;
-//echo "<br>";
-//echo $updateResult;
-//echo "<br>";
-
+//Find and Update the next '0' Status Coach
 if ($selectResult) {
   
     while($r = mysql_fetch_array($selectResult)) {
       
-//        $name = $r["$cNamefield"];
-//        $city = $r["$cCityField"];
-//        $story = $r["$cStoryField"];
-//        $statement = $r["$cStatementField"];
-//        $pic = $r["$cPicField"];
-//        $status = $r["$cStatusfield"];
-//      
-//        echo "\"$name\",\"$city\",\"$story\",\"$statement\",\"$pic\",\"$status\"<br>";
+        $name = $r["$cNameField"];
+        $city = $r["$cCityField"];
+        $story = $r["$cStoryField"];
+        $statement = $r["$cStatementField"];
+        $pic = $r["$cPicField"];
+        $status = $r["$cStatusField"];
       
-      $rows[] = $r;
-      
+        if ($status < "1") {
+//            echo "\"$name\",\"$city\",\"$story\",\"$statement\",\"$pic\",\"$status\"<br>";
+//            echo "UPDATE endTheTrend SET coachUse = '$status' WHERE coachName = '$name';";
+//              $updateQuery = "UPDATE endTheTrend SET coachUse = '1' WHERE coachName = '$name';";
+//              $supdateResult = mysql_query($updateQuery);
+//              $updateResult;
+          
+          $cJSONString = "{"coachesJ":[{"coachPic":"$pic","coachName":"$name","coachCity":"$city","coachStory":"$story","coachStatement":"$statement","coachUse":"$status"}]}
+          
+          echo "$cJSONString";
+
+            exit();
+        }
     }
   
-  echo json_encode($rows);
+//  echo json_encode($rows);
   
 }
 
