@@ -45,7 +45,7 @@ if ($selectResult) {
 //              $supdateResult = mysql_query($updateQuery);
 //              $updateResult;
           
-          $cJSONString = "{"coachesJ":[{"coachPic":"$pic","coachName":"$name","coachCity":"$city","coachStory":"$story","coachStatement":"$statement","coachUse":"$status"}]}
+//          $cJSONString = "{"coachesJ":[{"coachPic":"$pic","coachName":"$name","coachCity":"$city","coachStory":"$story","coachStatement":"$statement","coachUse":"$status"}]}
           
           echo "$cJSONString";
 
