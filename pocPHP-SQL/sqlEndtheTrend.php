@@ -45,7 +45,7 @@ if ($selectResult) {
               $supdateResult = mysql_query($updateQuery);
               $updateResult;
           
-          $cPHPArray = array("$name", "$city", "$story", "$statement", "$pic", "$status");
+          $cPHPArray = array("$name", "$city", "$story", "$statement", "$pic");
 //          echo "$cJSONString[1]";
           
           $cJSONString = json_encode($cPHPArray);
