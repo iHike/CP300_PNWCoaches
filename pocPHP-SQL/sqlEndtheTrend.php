@@ -44,19 +44,17 @@ if ($selectResult) {
               $updateQuery = "UPDATE endTheTrend SET coachUse = '1' WHERE coachName = '$name';";
               $supdateResult = mysql_query($updateQuery);
               $updateResult;
+//              $status++;
           
-          $cPHPArray = array("$name", "$city", "$story", "$statement", "$pic");
-//          echo "$cJSONString[1]";
-          
-          $cJSONString = json_encode($cPHPArray);
-          echo "<br><hr><br>$cJSONString";
+            $cPHPArray = array("$name", "$city", "$story", "$statement", "$pic", "$status");
+
+            $cJSONString = json_encode($cPHPArray);
+            echo "<br><hr><br>$cJSONString";
 
             exit();
         }
-    }
-  
-//  echo json_encode($rows);
-  
+    }  
+    echo "Please Reset the Database";
 }
 
 mysqli_close();
