@@ -39,15 +39,17 @@ if ($selectResult) {
         $status = $r["$cStatusField"];
       
         if ($status < "1") {
-//            echo "\"$name\",\"$city\",\"$story\",\"$statement\",\"$pic\",\"$status\"<br>";
-//            echo "UPDATE endTheTrend SET coachUse = '$status' WHERE coachName = '$name';";
-//              $updateQuery = "UPDATE endTheTrend SET coachUse = '1' WHERE coachName = '$name';";
-//              $supdateResult = mysql_query($updateQuery);
-//              $updateResult;
+            echo "\"$name\",\"$city\",\"$story\",\"$statement\",\"$pic\",\"$status\"<br>";
+            echo "UPDATE endTheTrend SET coachUse = '$status' WHERE coachName = '$name';";
+              $updateQuery = "UPDATE endTheTrend SET coachUse = '1' WHERE coachName = '$name';";
+              $supdateResult = mysql_query($updateQuery);
+              $updateResult;
           
-//          $cJSONString = "{"coachesJ":[{"coachPic":"$pic","coachName":"$name","coachCity":"$city","coachStory":"$story","coachStatement":"$statement","coachUse":"$status"}]}
+          $cPHPArray = array("$name", "$city", "$story", "$statement", "$pic", "$status");
+//          echo "$cJSONString[1]";
           
-          echo "$cJSONString";
+          $cJSONString = json_encode($cPHPArray);
+          echo "<br><hr><br>$cJSONString";
 
             exit();
         }
