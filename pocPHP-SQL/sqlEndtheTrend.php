@@ -44,7 +44,6 @@ if ($selectResult) {
               $updateQuery = "UPDATE endTheTrend SET coachUse = '1' WHERE coachName = '$name';";
               $supdateResult = mysql_query($updateQuery);
               $updateResult;
-//              $status++;
           
             $cPHPArray = array("$name", "$city", "$story", "$statement", "$pic", "$status");
 
